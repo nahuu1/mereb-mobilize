@@ -3,17 +3,27 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { motion } from 'framer-motion';
 
 const Contact = () => {
   const { language } = useLanguage();
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold mb-6">
+      <motion.h1 
+        className="text-4xl font-bold mb-6"
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
         {language === 'en' ? 'Contact Us' : 'አግኙን'}
-      </h1>
+      </motion.h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div>
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
           <h2 className="text-2xl font-semibold mb-4">
             {language === 'en' ? 'Get in Touch' : 'ያግኙን'}
           </h2>
@@ -26,8 +36,23 @@ const Contact = () => {
           <p className="mb-4">
             <strong>{language === 'en' ? 'Location:' : 'አድራሻ:'}</strong> {language === 'en' ? 'Addis Ababa, Ethiopia' : 'አዲስ አበባ፣ ኢትዮጵያ'}
           </p>
-        </div>
-        <div>
+          <motion.img
+            src="/ceo-image.jpg"
+            alt="CEO of Don Kassa Inc."
+            className="w-full max-w-md mx-auto rounded-lg shadow-lg"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          />
+          <p className="mt-2 text-center text-sm">
+            {language === 'en' ? 'Our CEO' : 'ዋና ስራ አስፈፃሚ'}
+          </p>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
           <h2 className="text-2xl font-semibold mb-4">
             {language === 'en' ? 'Send us a Message' : 'መልእክት ይላኩልን'}
           </h2>
@@ -39,7 +64,7 @@ const Contact = () => {
               {language === 'en' ? 'Send Message' : 'መልእክት ይላኩ'}
             </Button>
           </form>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

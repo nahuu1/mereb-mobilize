@@ -9,6 +9,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Resources from "./pages/Resources";
 import Contact from "./pages/Contact";
+import { AnimatePresence } from "framer-motion";
 
 const queryClient = new QueryClient();
 
@@ -18,18 +19,20 @@ const App = () => (
       <TooltipProvider>
         <Toaster />
         <BrowserRouter>
-          <div className="flex flex-col min-h-screen">
-            <Header />
-            <main className="flex-grow">
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/resources" element={<Resources />} />
-                <Route path="/contact" element={<Contact />} />
-              </Routes>
-            </main>
-            <Footer />
-          </div>
+          <AnimatePresence mode="wait">
+            <div className="flex flex-col min-h-screen">
+              <Header />
+              <main className="flex-grow">
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/about" element={<About />} />
+                  <Route path="/resources" element={<Resources />} />
+                  <Route path="/contact" element={<Contact />} />
+                </Routes>
+              </main>
+              <Footer />
+            </div>
+          </AnimatePresence>
         </BrowserRouter>
       </TooltipProvider>
     </LanguageProvider>
